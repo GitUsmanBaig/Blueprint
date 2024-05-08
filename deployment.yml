@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blueprint-deployment
+  namespace: blueprint-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blueprint
+  template:
+    metadata:
+      labels:
+        app: blueprint
+    spec:
+      containers:
+      - name: blueprint
+        image: blueprint-app:latest
+        imagePullPolicy: Never  
+        ports:
+        - containerPort: 8080
